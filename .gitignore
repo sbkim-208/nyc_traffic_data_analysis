@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Data files
+backend/data/raw/
+backend/data/processed/
+test.csv
+*.parquet
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
