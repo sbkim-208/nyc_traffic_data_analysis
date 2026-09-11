@@ -34,6 +34,15 @@ def get_sensor_error_pivot(df: pd.DataFrame) -> pd.DataFrame:
     return detail.pivot(index="hour", columns="borough", values="error_rate")
 
 
+def get_segment_error_rates(df: pd.DataFrame) -> pd.DataFrame:
+    """Error rate for every segment (id), unlike get_most_error_prone_segments which truncates to top_n"""
+    total = df.groupby("id").size().rename("total")
+    errors = df[df["status"] == -101].groupby("id").size().rename("error_count")
+    result = pd.concat([total, errors], axis=1).fillna(0).astype({"error_count": int})
+    result["error_rate"] = (result["error_count"] / result["total"]).round(4)
+    return result.reset_index()
+
+
 def get_most_error_prone_segments(df: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
     """Top N segments (id) by error rate"""
     total = df.groupby(["id", "borough", "link_name"]).size().rename("total")

@@ -1,5 +1,9 @@
 # NYC Traffic Data Analysis
 
+![NYC Traffic: PM-peak congestion and sensor error hotspots](outputs/congestion_sensor_map.png)
+
+*PM-peak congestion (color, free-flowing → congested) and sensor error hotspots (×, ≥50% error rate) across the 125-segment monitored network. Run: `python congestion_error_map.py`*
+
 ## 1. Sensor Reliability
 
 Data: NYC DOT Traffic Speeds NBE (Socrata `i4gi-tjb9`), 2024-04-01 to 2024-08-01 (4 months), 4,233,169 rows
